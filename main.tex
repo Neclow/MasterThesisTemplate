@@ -1,0 +1,124 @@
+% LTeX: enabled=false
+%TC:incbib
+\documentclass[a4paper, oneside, 12pt]{report}
+\usepackage{amsmath}
+\usepackage[english]{babel}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage[final]{microtype}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks, urlcolor=cyan]{hyperref}
+\usepackage[capitalize]{cleveref}
+\usepackage{lipsum}
+\usepackage{longtable}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing, decorations.pathreplacing}
+
+% All page numbers positioned at the bottom of the page
+\usepackage{fancyhdr}
+\fancyhf{} % clear all header and footers
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt} % remove the header rule
+\pagestyle{fancy}
+
+\usepackage{fontspec}
+
+\usepackage{siunitx}
+
+\usepackage{xurl}
+\urlstyle{same}
+\usepackage[backend=biber, style=nature, sorting=none]{biblatex}
+\DeclareLanguageMapping{english}{american-apa}
+
+\addbibresource{references.bib}
+\emergencystretch=1em
+
+\hyphenpenalty=5000
+
+\usepackage{glossaries}
+
+\makenoidxglossaries
+
+\loadglsentries{Acronyms}
+
+\begin{document}
+
+\input{Cover}
+
+\setmainfont{Times New Roman}
+\setstretch{1.5}
+
+\vspace*{\fill}
+\hfill
+\begin{center}
+This page intentionally left blank.
+\end{center}
+\vspace{\fill}
+\null\newpage
+
+\chapter*{Acknowledgements}
+\clearpage
+
+\setstretch{1.2}
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\setstretch{0.1}
+\glsunsetall
+\renewcommand*{\glossarypreamble}{\vspace*{-2em}}
+\addcontentsline{toc}{chapter}{Abbreviations}
+\printnoidxglossary[type=\acronymtype, title={Abbreviations},nonumberlist]
+
+\setstretch{1.4}
+% \clearpage
+\setcounter{secnumdepth}{-2}
+\vspace*{-2em}
+\chapter{Abstract}
+\input{Abstract}
+\setcounter{secnumdepth}{2}
+
+\setstretch{1.5}
+\clearpage
+\chapter{Introduction}
+\vspace{-1em}
+
+\chapter{Title of Chapter 2}
+\input{Chapter2}
+
+\chapter{Title of Chapter 3}
+\input{Chapter3}
+
+\chapter{Conclusion}
+
+\begin{refcontext}
+    \setcounter{secnumdepth}{-2}
+    \setstretch{0}
+    \newgeometry{left=2.5cm, bottom=2.5cm, right=2.5cm, top=2.5cm}
+    \renewcommand{\thepage}{}
+    \printbibliography[heading=bibnumbered,title={References}]
+    \setcounter{secnumdepth}{2}
+    \newpage
+\end{refcontext}
+
+\restoregeometry
+\setcounter{secnumdepth}{-2}
+\chapter{Appendix}
+\vspace{-2em}
+\input{Appendix}
+\setcounter{secnumdepth}{2}
+
+\end{document}
